@@ -17,7 +17,7 @@ DogeHouseLite has been optimized for GPRS & Orange Neostrada internet connection
 - Without the favicon, only around 10kb of data gets loaded.
 
 ### Self-hosting it
-1. You are going to need the LAMP stack on your computer (Linux, Apache, MySQL8 and PHP7) and Composer
+1. You are going to need the LAMP stack on your computer (Linux, Apache, MySQL8 and PHP7.4) and Composer
 2. Update the config.php file according to your DB settings
 3. Run the SQL Migration located in [app/migrations/dogehouselite.sql](app/migrations/dogehouselite.sql)
 4. Create a .htaccessfile and paste the following code in here:
@@ -29,3 +29,14 @@ RewriteRule ^(.*)$ index.php [L,QSA]
 ```
 5. Run `composer dump-autoload`
 6. Everything should be up and running.
+
+##### Tech Used
+- HTML5
+- CSS
+- PHP 7.4
+- Composer
+- MySQL 8.0.23
+- A heavily customized version of pzplUI
+- DogePHP
+- Apache2
+- Linux
