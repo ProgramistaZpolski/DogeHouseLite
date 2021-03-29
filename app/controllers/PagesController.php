@@ -7,14 +7,13 @@ use App\Core\App;
 
 class PagesController
 {
-	public function home()
-	{
-		$result = App::get("database")->sql("SELECT * FROM `cache` WHERE `route` LIKE 'popular';");
+	protected function fetcher(String $route, $whattofetch, Int $cacheTime) {
+		$result = App::get("database")->sql("SELECT * FROM `cache` WHERE `route` LIKE '{$route}';");
 		if (isset($result) && $result != []) {
 			$dbDate = new \DateTime($result[0]->written_on);
 			$currDate = new \DateTime();
 			$interval = $currDate->diff($dbDate);
-			if ($interval->i < 1) {
+			if ($interval->i < $cacheTime) {
 				$result = json_decode(
 					str_replace(
 						"\n",
@@ -27,18 +26,34 @@ class PagesController
 					)
 				);
 			} else {
-				App::get("database")->sqlNoFetch("DELETE FROM `cache` WHERE route='popular'");
-				$result2 = Doge::rooms("popular");
+				App::get("database")->sqlNoFetch("DELETE FROM `cache` WHERE route='{$route}'");
+				$result2 = $whattofetch();
 				$result = str_replace("'", "", json_encode($result2));
-				App::get("database")->sqlNoFetch("INSERT INTO `cache` (`id`, `route`, `content`, `written_on`) VALUES (NULL, 'popular', '{$result}', CURRENT_TIMESTAMP);");
+				App::get("database")->sqlNoFetch("INSERT INTO `cache` (`id`, `route`, `content`, `written_on`) VALUES (NULL, '{$route}', '{$result}', CURRENT_TIMESTAMP);");
 				$result = $result2;
 			}
 		} else {
-			$result2 = Doge::rooms("popular");
+			$result2 = $whattofetch();
 			$result = str_replace("'", "", json_encode($result2));
-			App::get("database")->sqlNoFetch("INSERT INTO `cache` (`id`, `route`, `content`, `written_on`) VALUES (NULL, 'popular', '{$result}', CURRENT_TIMESTAMP);");
+			App::get("database")->sqlNoFetch("INSERT INTO `cache` (`id`, `route`, `content`, `written_on`) VALUES (NULL, '{$route}', '{$result}', CURRENT_TIMESTAMP);");
 			$result = $result2;
 		};
+		return $result;
+	}
+
+	public function home()
+	{
+		$result = $this->fetcher("popular", function () {
+			return Doge::rooms("popular");
+		}, 1);
 		return view("index", ["data" => $result]);
+	}
+
+	public function scheduledRooms()
+	{
+		$result = $this->fetcher("schedule", function () {
+			return Doge::rooms("scheduled");
+		}, 5);
+		return view("scheduled", ["data" => $result]);
 	}
 }
