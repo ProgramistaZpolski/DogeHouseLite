@@ -1,7 +1,6 @@
-<?php require_once('partials/head.php'); ?>
+<?php /* Compiled from a Blade Template on 29-03-2021 11:10:22 */ ?>
+<?php require_once 'partials/head.php'; ?>
 
-<h1>Welcome to pzplPHP</h1>
+<img src="<?= htmlspecialchars(asset("dogehouse_logo.svg")) ?>" alt="DogeHouse logo" loading="lazy" decoding="async" width="336" height="80"><span>Lite</span>
 
-<?php var_dump($_SESSION); ?>
-
-<?php require_once('partials/footer.php'); ?>
+<?php require_once 'partials/footer.php'; ?>
