@@ -2,13 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Core\Helpers\Arr;
-use App\Core\Forms\Forms;
+use ProgramistaZpolski\DogePHP\Doge;
 
 class PagesController
 {
 	public function home()
 	{
-		return view('index');
+		return view("index", ["data" => Doge::rooms("popular")]);
 	}
 }

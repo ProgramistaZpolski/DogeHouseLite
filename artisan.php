@@ -99,7 +99,7 @@ if ($argv[1] == "controller") {
 	$template = preg_replace("/@empty\(([^\n]*)\)/si", "<?php if (!isset($1) || isset($1)) : ?>", $template);
 	$template = preg_replace("/@unless \(([^\n]*)\)/si", "<?php if (!$1) : ?>", $template);
 	$template = preg_replace("/@elseif \(([^\n]*)\)/si", "<?php elseif ($1) : ?>", $template);
-	$template = preg_replace("/@foreach \(([^)-]*)\)/si", "<?php foreach ($1) : ?>", $template);
+	$template = preg_replace("/@foreach \(([^)\n]*)\)/si", "<?php foreach ($1) : ?>", $template);
 	$template = preg_replace("/@json\(([^\n]*)\)/mu", "<?= json_encode($1) ?>", $template);
 	$template = preg_replace("/@else\n/mu", "<?php else : ?>\n", $template);
 	$template = preg_replace("/@endisset\n/mu", "<?php endif; ?>\n", $template);
