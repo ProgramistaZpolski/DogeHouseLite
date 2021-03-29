@@ -1,6 +1,6 @@
 {
-	"name": "h/application",
-	"description": "A website",
+	"name": "programistazpolski/dogehouselite",
+	"description": "A lighter version of dogehouse",
 	"autoload": {
 		"classmap": [
 			"./"
