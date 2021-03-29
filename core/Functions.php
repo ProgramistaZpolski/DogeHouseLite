@@ -83,3 +83,13 @@ function csrf()
 		\Ignite(401);
 	}
 }
+
+function clean(String $str)
+{
+	return str_replace("=", "\\=", str_replace("\"", "\\\"", str_replace("'", "\\'", $str)));
+}
+
+function unclean(String $str)
+{
+	return str_replace("\\=", "=", str_replace("\\\"", "\"", str_replace("\\'", "'", $str)));
+}
