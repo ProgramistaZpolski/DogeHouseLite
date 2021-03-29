@@ -204,7 +204,7 @@ body {
 }
 
 a {
-	color: var(--link-color);
+	color: white;
 	text-decoration: none;
 	background: transparent;
 }
@@ -2563,4 +2563,9 @@ abbr[title] {
 
 .bg-info-900 {
 	background-color: var(--info-blue-900);
+}
+
+.card-body pre {
+	font-family: unset;
+	margin: 1rem;
 }

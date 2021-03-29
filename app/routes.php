@@ -1,6 +1,7 @@
 <?php
 
 $router->get("", "PagesController@home");
+$router->get("home", "PagesController@home");
 $router->get("scheduled", "PagesController@sheduledRooms");
 $router->get("stats", "PagesController@statistics");
 $router->get("bots", "PagesController@bots");
