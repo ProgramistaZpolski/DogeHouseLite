@@ -14,7 +14,11 @@ class TestingController
 		}
 		$test = new TestRunner();
 		$test->url(App::get("config")["site"]["url"], 200);
-		$test->url(App::get("config")["site"]["url"] . "kukanqtokasztan", 404);
+		$test->url(App::get("config")["site"]["url"] . "home", 200);
+		$test->url(App::get("config")["site"]["url"] . "scheduled", 200);
+		$test->url(App::get("config")["site"]["url"] . "stats", 200);
+		$test->url(App::get("config")["site"]["url"] . "bots", 200);
+		$test->url(App::get("config")["site"]["url"] . "botfasdfjsdhafkj", 404);
 		return $test->test();
 	}
 }
