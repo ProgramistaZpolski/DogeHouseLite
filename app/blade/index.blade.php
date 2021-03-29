@@ -1,6 +1,9 @@
 @extends('head')
 
-<img src="{{ asset("dogehouse_logo.svg") }}" alt="DogeHouse logo" loading="lazy" decoding="async" width="336" height="80"><span>Lite</span>
+<header class="text-center">
+	<img src="{{ asset("dogehouse_logo.svg") }}" alt="DogeHouse logo" loading="lazy" decoding="async" width="336" height="80"><span>Lite</span>
+	<br><br><p>Optimized for GPRS & Orange Neostrada connections.</p>
+</header>
 
 @foreach ($data->rooms as $value)
 	<div class="card p3 m5">

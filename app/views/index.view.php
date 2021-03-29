@@ -1,7 +1,10 @@
-<?php /* Compiled from a Blade Template on 29-03-2021 12:43:18 */ ?>
+<?php /* Compiled from a Blade Template on 29-03-2021 12:53:08 */ ?>
 <?php require_once 'partials/head.php'; ?>
 
-<img src="<?= htmlspecialchars(asset("dogehouse_logo.svg")) ?>" alt="DogeHouse logo" loading="lazy" decoding="async" width="336" height="80"><span>Lite</span>
+<header class="text-center">
+	<img src="<?= htmlspecialchars(asset("dogehouse_logo.svg")) ?>" alt="DogeHouse logo" loading="lazy" decoding="async" width="336" height="80"><span>Lite</span>
+	<br><br><p>Optimized for GPRS & Orange Neostrada connections.</p>
+</header>
 
 <?php foreach ($data->rooms as $value) : ?>
 	<div class="card p3 m5">
