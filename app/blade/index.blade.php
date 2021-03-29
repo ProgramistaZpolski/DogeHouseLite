@@ -4,16 +4,16 @@
 	<img src="{{ asset("dogehouse_logo.svg") }}" alt="DogeHouse logo" loading="lazy" decoding="async" width="336" height="80"><span>Lite</span>
 	<br><br><p>Optimized for GPRS & Orange Neostrada connections.</p>
 	<br><nav>
-		<a href="home"><button class="btn btn-success">Popular Rooms</button></a>
-		<a href="scheduled"><button class="btn btn-normal">Scheduled Rooms</button></a>
-		<a href="stats"><button class="btn btn-normal">Statistics</button></a>
-		<a href="bots"><button class="btn btn-normal">Bots</button></a>
+		<a href="home"><button data-current>Popular Rooms</button></a>
+		<a href="scheduled"><button>Scheduled Rooms</button></a>
+		<a href="stats"><button>Statistics</button></a>
+		<a href="bots"><button>Bots (Very Slow)</button></a>
 	</nav>
 </header>
 
 @foreach ($data->rooms as $value)
-	<a href="http://dogehouse.tv/{{ $value->id }}">
-		<div class="card p3 m5">
+	<a href="http://dogehouse.tv/room/{{ $value->id }}">
+		<div class="card">
 			<div class="card-header">
 				Created on: {{ $value->inserted_at }} | {{ $value->isPrivate ? "Private" : "Public" }}
 			</div>

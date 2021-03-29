@@ -56,4 +56,18 @@ class PagesController
 		}, 5);
 		return view("scheduled", ["data" => $result]);
 	}
+
+	public function statistics()
+	{
+		$result = $this->fetcher("stats", function () {
+			return Doge::stats();
+		}, 5);
+		return view("stats", ["data" => $result]);
+	}
+
+	public function bots()
+	{
+		$result = Doge::bots();
+		return view("bots", ["data" => $result]);
+	}
 }
