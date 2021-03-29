@@ -11,7 +11,7 @@ class ExampleMigration
 
 	public function up()
 	{
-		return "CREATE TABLE `beaverbook`.`users2w` ( `id` INT NOT NULL AUTO_INCREMENT COMMENT 'User ID' , `email` TEXT NOT NULL COMMENT 'Users Email' , `password` TEXT NOT NULL COMMENT 'Users Password' , `type` TEXT NOT NULL COMMENT 'User Type - for example Admin/User' , PRIMARY KEY (`id`)) ENGINE = InnoDB;";
+		return file_get_contents("dogehouselite.sql");
 	}
 
 	/**
@@ -21,6 +21,6 @@ class ExampleMigration
 
 	public function down()
 	{
-		return "DROP TABLE `users2w`";
+		return "DROP TABLE `cache`";
 	}
 }
